@@ -9,6 +9,12 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+body{
+  /* overflow: hidden !important; */
+}
+.MuiSelect-icon{
+  color: gray !important;
+}
 
 @layer base{
   body {
