@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 
 // Components
 import Layout from '@/components/Layout';
@@ -27,16 +27,17 @@ export default function Home(){
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    useMemo(() => {
         if(user && textData){
             try{
-                if(user.time > 180){
-                    setText(textData.lvl3[Math.floor(Math.random() * textData.lvl3.length)]);
-                }else if(user.time > 60 && user.time != 180){
-                    setText(textData.lvl2[Math.floor(Math.random() * textData.lvl2.length)]);
-                }else{
-                    setText(textData.lvl1[Math.floor(Math.random() * textData.lvl1.length)]);
-                }
+                setText(textData.lvl2[Math.floor(Math.random() * textData.lvl2.length)]);
+                // if(user.time > 180){
+                //     setText(textData.lvl3[Math.floor(Math.random() * textData.lvl3.length)]);
+                // }else if(user.time > 60 && user.time != 180){
+                //     setText(textData.lvl2[Math.floor(Math.random() * textData.lvl2.length)]);
+                // }else{
+                //     setText(textData.lvl1[Math.floor(Math.random() * textData.lvl1.length)]);
+                // }
             }catch(err: any){
                 setError(err || "Something went wrong!");
                 console.log(err);
@@ -52,7 +53,7 @@ export default function Home(){
             <div className='flex flex-col justify-between items-center gap-10 pb-28 px-0 md:px-5'>
                 <div className='flex flex-col justify-between items-center gap-16'>
                     <h1 className='text-3xl m-0 p-0 font-bold flex flex-wrap justify-center items-baseline text-center gap-1'>Test your typing <span className='m-0 p-0 font-extrabold text-cyan-400'>Speed!</span></h1>
-                    {error ? <p className='text-xl text-red-600 font-bold text-center'>{error}</p> : !mounted || loading ? <CircularProgress color="info" /> : <Game text={text} />}
+                    {error ? <p className='text-xl text-red-600 font-bold text-center'>{error}</p> : !mounted || loading || !text ? <CircularProgress color="info" /> : <Game text={text} />}
                 </div>
 
                 <hr className={`${user?.gamestatus === "finish" ? "visible" : "invisible"} w-full block h-px border-0 border-t border-t-black dark:border-t-white mt-10`} />
