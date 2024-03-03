@@ -5,6 +5,7 @@ import Layout from '@/components/Layout';
 import Game from '@/components/Game';
 import { CircularProgress } from '@mui/material';
 import { userContext } from '@/utils/UserProvider';
+import { siteInfo } from '@/utils/Assets';
 
 
 export default function Home(){
@@ -23,8 +24,8 @@ export default function Home(){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if(user){
-            fetch(`/api/data?t=${user?.time}&l=${user?.language}`,{ method: "POST" })
+        if(user && siteInfo?.url){
+            fetch(`${siteInfo.url}/api/data?t=${user?.time}&l=${user?.language}`,{ method: "POST" })
             .then((res) => res.json())
             .then((res) => {
                 setText(res.text);
