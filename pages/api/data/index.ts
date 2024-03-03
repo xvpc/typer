@@ -14,10 +14,8 @@ type errorType = {
 // const text = "data/text.json";
 
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<dataType | errorType>){
-  res.status(200).json({
-    error: "testing"
-  })
+export default async function handler(req: NextApiRequest, res: NextApiResponse<dataType | errorType>){
+  return res.status(500).json({error: 'Only GET requests!'})
 
   // if(req.method === "POST"){
   //   const time = req.query?.t;
