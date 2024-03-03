@@ -9,6 +9,7 @@
 # testing
 /coverage
 /temp
+/data
 
 # next.js
 /.next/

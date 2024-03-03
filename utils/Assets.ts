@@ -6,3 +6,11 @@ export const siteInfo = {
     url: "https://xvpc.github.io/typer",
     donationUrl: "https://paypal.me/xvp131"
 }
+
+export const textData = 
+[
+    "lorem ipsum dolor sit amet, consect lorem ipsum dolor sit amet, consect",
+    "afkjh asoh aosh ofa oiash oha fm dolor sit amet, consect",
+    "g3 2oig  fadgfe  fqw qw qw qwf qw fqw fct",
+    "la fiaosjhf oisah fohnqwoih fqw fq"
+]

@@ -3,9 +3,13 @@ import React, { useContext, useEffect, useState } from 'react'
 // Components
 import Layout from '@/components/Layout';
 import Game from '@/components/Game';
+
+// Mui
 import { CircularProgress } from '@mui/material';
+
+// Utils
 import { userContext } from '@/utils/UserProvider';
-import { siteInfo } from '@/utils/Assets';
+import { textData } from '@/utils/Assets';
 
 
 export default function Home(){
@@ -24,16 +28,15 @@ export default function Home(){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if(user && siteInfo?.url){
-            fetch(`${siteInfo.url}/api/data?t=${user?.time}&l=${user?.language}`,{ method: "POST" })
-            .then((res) => res.json())
-            .then((res) => {
-                setText(res.text);
-            })
-            .catch((err) => {
+        if(user && textData?.length > 0){
+            try{
+                setText(textData[Math.floor(Math.random() * textData.length)]);
+            }catch(err: any){
                 setError(err || "Something went wrong!");
                 console.log(err);
-            }).finally(() => setLoading(false))
+            }finally{
+                setLoading(false)
+            }
         }
     }, []);
 

@@ -142,7 +142,7 @@ export default function Layout({ children, title, description, keywords, image }
                                 <div className='text-gray-400 flex flex-col justify-between items-start gap-2 ps-1'>
                                     <Link href="about" title='About typer' className="p-0 m-0 hover:underline">About typer</Link>
                                     <Link href="https://xvpc.dev" target='_blank' title='Contact Us' className="p-0 m-0 hover:underline">Contact Us</Link>
-                                    <Link href="privecy" title='Privecy & Terms<' className="p-0 m-0 hover:underline">Privecy & Terms</Link>
+                                    <Link href="privecy" title='Privecy & Terms' className="p-0 m-0 hover:underline">Privecy & Terms</Link>
                                 </div>
                             </div>
                             <div className='flex flex-col justify-between items-start gap-4'>
