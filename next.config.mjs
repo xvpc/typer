@@ -5,7 +5,8 @@ const nextConfig = {
     domains: ["i.ibb.co"]
   },
   output: 'export',
-  distDir: 'out'
+  distDir: 'out',
+  basePath: '/typer'
 };
 
 export default nextConfig;
