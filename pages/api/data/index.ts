@@ -16,7 +16,7 @@ type errorType = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<dataType | errorType>){
   res.status(200).json({
-    message: "testing"
+    error: "testing"
   })
 
   // if(req.method === "POST"){
