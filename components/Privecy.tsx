@@ -17,7 +17,7 @@ export default function Privecy() {
                     <CiWarning className=' text-slate-800 text-4xl dark:text-blue-100' size={120} />
                     <h1 className='capitalize font-extrabold text-slate-800 text-4xl dark:text-blue-100'>privacy policy</h1>
                 </div>
-                <div className='container md:px-20 flex flex-col justify-between items-center gap-8'>
+                <div className='container md:px-20 flex flex-col justify-between items-start md:items-center gap-8'>
                     <div className='flex flex-col justify-between items-start md:items-center md:text-center gap-4 py-2 px-2'>
                         <h3 className='capitalize font-extrabold text-2xl md:text-3xl dark:text-stone-300'>What information do we collect?</h3>
                         <p className='md:px-20 font-medium text-wrap'>

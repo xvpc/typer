@@ -56,7 +56,7 @@ export default function Game({ text }: GameProps){
         setGameStatus("finish");
         setTimeout(() => {
             setUserSpeed(Math.floor(((lettersTyped/4) / time) * 60));
-            setUserAccuracy(Math.min((Number((lettersTyped / text.length).toFixed(2)) * 100), 100));
+            setUserAccuracy(Number(Math.min(((lettersTyped / text.length) * 100), 100).toFixed(2)));
             // console.log(`game is over user score is: ${userSpeed}wpm | ${userAccuracy}%  => ${lettersTyped} -- ${text.split(' ').length} -- ${text.split(' ').length / (time/60)}`);
             document?.getElementById("score-section")?.scrollIntoView({
                 block: "center",
