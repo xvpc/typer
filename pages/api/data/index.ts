@@ -13,9 +13,23 @@ type errorType = {
 
 // const text = "data/text.json";
 
+// export const config = {
+//   runtime: 'edge',
+// }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<dataType | errorType>){
-  return res.status(500).json({error: 'Only GET requests!'})
+
+// export default async function handler(request: Request){
+//   if(!await checkAuth(request)){
+//       return new Response(JSON.stringify({ error: "Unauthorized request!" }), {
+//           status: 401,
+//           headers: apiHeaders,
+//       })
+//   }
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse){
+  return new Response(JSON.stringify({ error: "testing" }), {
+    status: 401,
+  })
 
   // if(req.method === "POST"){
   //   const time = req.query?.t;
