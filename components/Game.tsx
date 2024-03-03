@@ -163,10 +163,11 @@ export default function Game({ text }: GameProps){
 
     return (
         <div id="game"
-        className='flex flex-col justify-between items-center gap-8'>
+        className='flex flex-col justify-between items-center gap-8'
+        >
             <div id="test" className='flex flex-wrap justify-center md:justify-between items-center gap-10 md:gap-56'>
                 <div className='flex justify-between items-center gap-2 md:gap-6'>
-                    <FormControl variant="standard" sx={{ m: 1, minWidth: 110 }}>
+                    <FormControl disabled={gameStatus === "finish"} variant="standard" sx={{ m: 1, minWidth: 110 }}>
                         <InputLabel className='dark:text-white'>Language</InputLabel>
 
                         <Select
@@ -178,7 +179,7 @@ export default function Game({ text }: GameProps){
                             <MenuItem value={"en-us"}>English</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl variant="standard" sx={{ m: 1, minWidth: 110 }}>
+                    <FormControl disabled={gameStatus === "finish"} variant="standard" sx={{ m: 1, minWidth: 110 }}>
                         <InputLabel className='dark:text-white'>Time</InputLabel>
 
                         <Select
@@ -203,7 +204,7 @@ export default function Game({ text }: GameProps){
                     </Button>
                     :
                     <Button 
-                    onClick={() => setGameStatus("started")}
+                    onClick={() => {setGameStatus("started"); setGameFocus(true);}}
                     className='bg-green-700 font-semibold' variant="contained" color="success">
                         Start
                     </Button>
@@ -212,11 +213,11 @@ export default function Game({ text }: GameProps){
 
             <div className={`${gameStatus == "started" ? "z-50 fixed h-screen w-screen top-0 dark:bg-slate-800 bg-slate-400" : "bg-transparent"}  transition duration-500 ease-in`}>
                 <p className={`${gameStatus == "started" ? "font-bold text-gray-200 my-4 mx-6 text-3xl absolute top-0 start-0" : "hidden"}`}>{FormatTime(gameTime)}</p>
-                <CiCircleRemove onClick={() => setGameStatus("finish")} className={`${gameStatus == "started" ? "absolute top-0 end-0 m-2 text-white hover:text-red-400 cursor-pointer" : "hidden"}`} size={50} />
+                <CiCircleRemove onClick={() => { setGameStatus("finish"); setGameFocus(false);}} className={`${gameStatus == "started" ? "absolute top-0 end-0 m-2 text-white hover:text-red-400 cursor-pointer" : "hidden"}`} size={50} />
 
                 <div className='after:select-none relative top-1/3 mx-0 lg:mx-44 after:pointer-events-none after:content-[""] after:absolute after:bottom-0 after:h-1/3 after:w-full after:bg-gradient-to-t from-neutral-200 to-transparent'>
                     <div 
-                    onMouseDown={() => setGameFocus(true)} 
+                    autoFocus={gameStatus === "started"}
                     // onKeyDown={handleKeyDown}
                     ref={gameRef}
                     style={{scrollbarWidth: "none"}}

@@ -10,13 +10,9 @@ import { userContext } from '@/utils/UserProvider';
 export default function Home(){
     const [mounted, setMounted] = useState(false);
     useEffect(() => {
-        let timeOut: NodeJS.Timeout | null;
-        timeOut = setTimeout(() => {
+        setTimeout(() => {
             setMounted(true)
         }, 900)
-        return () => {
-            clearTimeout(timeOut);
-        }
     }, []);
 
     const user = useContext(userContext);
@@ -40,11 +36,12 @@ export default function Home(){
         }
     }, []);
 
+
     return (
         <Layout>
             <div className='flex flex-col justify-between items-center gap-10 pb-28 px-0 md:px-5'>
                 <div className='flex flex-col justify-between items-center gap-16'>
-                    <h1 className='text-2xl m-0 p-0 font-bold flex flex-wrap justify-center items-baseline text-center gap-1'>Test your typing <span className='m-0 p-0 font-extrabold text-cyan-400'>Speed!</span></h1>
+                    <h1 className='text-3xl m-0 p-0 font-bold flex flex-wrap justify-center items-baseline text-center gap-1'>Test your typing <span className='m-0 p-0 font-extrabold text-cyan-400'>Speed!</span></h1>
                     {error ? <p className='text-xl text-red-600 font-bold text-center'>{error}</p> : !mounted || loading ? <CircularProgress color="info" /> : <Game text={text} />}
                 </div>
 

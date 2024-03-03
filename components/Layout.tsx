@@ -15,6 +15,7 @@ import { Button, FormControlLabel, Switch, styled } from '@mui/material';
 import { IoIosArrowDown } from 'react-icons/io';
 import { FcMoneyTransfer } from 'react-icons/fc';
 import Link from 'next/link';
+import { siteInfo } from '@/utils/Assets';
 
 type LayoutProps = {
     children: React.ReactNode,
@@ -81,18 +82,18 @@ export default function Layout({ children, title, description, keywords, image }
     return (  
         <>
             <Head>
-                    <title>{title}</title>
-                <meta name="title" content={title} />
-                <meta name="description" content={description} />
-                <meta name="keywords" content={keywords?.join(',')} />
+                    <title>{title || siteInfo?.name}</title>
+                <meta name="title" content={title || siteInfo?.name} />
+                <meta name="description" content={description || siteInfo?.description} />
+                <meta name="keywords" content={keywords?.join(',') || siteInfo?.keywords?.join(',')} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
                 {/* OG tags */}
                 <meta property="og:type" content="website"/>
-                <meta property="og:url" content="http://localhost:3000"/>
-                <meta property="og:title" content={title} />
-                <meta property="og:description" content={description} />
-                <meta property="og:image" content={image} />
+                <meta property="og:url" content={siteInfo?.url} />
+                <meta property="og:title" content={title || siteInfo?.name} />
+                <meta property="og:description" content={description || siteInfo?.description} />
+                <meta property="og:image" content={image || siteInfo?.image} />
 
                 {/* ICONS */}
                 <link rel="shortcut icon" type="image/x-icon" href='/favicon/favicon.ico' />
@@ -104,7 +105,9 @@ export default function Layout({ children, title, description, keywords, image }
             <div className={`${inter.className} overflow-x-hidden h-screen flex flex-col justify-between items-center gap-10 p-0`}>
                 <header id='header' className='w-full h-14 dark:bg-black bg-slate-700'>
                     <nav className='container mx-auto overflow-hidden flex justify-between items-center gap-4 md:px-8 px-4 py-2'>
-                        <img className='pointer-events-none' height={400} width={100} src='images\logo.png' alt='logo' />
+                        <Link href="/" title='Test your typing Speed!'>
+                            <img className='pointer-events-none' height={400} width={100} src='images\logo.png' alt='logo' />
+                        </Link>
                         <div className="flex justify-between items-center gap-6">
                             <FormControlLabel
                                 className='h-10'
@@ -122,13 +125,13 @@ export default function Layout({ children, title, description, keywords, image }
                 </header>
 
                 
-                <main id='main' className='container'>
+                <main id='main' className='container mb-auto'>
                     {children}
                 </main>
 
                 <footer id='footer' className='dark:bg-gray-950 bg-gray-800 w-full h-auto'>
                     <div className='container mx-auto flex md:flex-row flex-col justify-between items-center gap-14 md:gap-0 px-10 md:px-32 pt-10 pb-5'>
-                        <div className='order-last md:order-first size-32 overflow-hidden rounded-lg relative'>
+                        <div onClick={() => document?.getElementById("header")?.scrollIntoView({ behavior: "smooth" })} className='cursor-pointer order-last md:order-first size-32 overflow-hidden rounded-lg relative'>
                             <img className='absolute w-full h-full pointer-events-none size-fit' height={300} width={150} src='images\icon.png' alt='icon' />
                             <div className='absolute w-full h-full bg-gradient-to-t from-black to-transparent'></div>
                         </div>
@@ -137,15 +140,15 @@ export default function Layout({ children, title, description, keywords, image }
                             <div className='flex flex-col justify-between items-start gap-4'>
                                 <h6 className='p-0 m-0 font-bold'>About</h6>
                                 <div className='text-gray-400 flex flex-col justify-between items-start gap-2 ps-1'>
-                                    <Link href="#" title='About typer' className="p-0 m-0 hover:underline">About typer</Link>
-                                    <Link href="#" title='Contact Us' className="p-0 m-0 hover:underline">Contact Us</Link>
-                                    <Link href="#" title='Privecy & Terms<' className="p-0 m-0 hover:underline">Privecy & Terms</Link>
+                                    <Link href="about" title='About typer' className="p-0 m-0 hover:underline">About typer</Link>
+                                    <Link href="https://xvpc.dev" target='_blank' title='Contact Us' className="p-0 m-0 hover:underline">Contact Us</Link>
+                                    <Link href="privecy" title='Privecy & Terms<' className="p-0 m-0 hover:underline">Privecy & Terms</Link>
                                 </div>
                             </div>
                             <div className='flex flex-col justify-between items-start gap-4'>
                                 <h6 className='p-0 m-0 font-bold'>Support</h6>
                                 <div className='text-gray-400 flex flex-col justify-between items-center gap-2 ps-1'>
-                                    <Link href="#" title='Donate' className="p-0 m-0 hover:underline flex justify-center items-center gap-1"><FcMoneyTransfer /> Donate</Link>
+                                    <Link href={siteInfo?.donationUrl || "#"} target='_blank' title='Donate' className="p-0 m-0 hover:underline flex justify-center items-center gap-1"><FcMoneyTransfer /> Donate</Link>
                                 </div>
                             </div>
                         </div>

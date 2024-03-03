@@ -9,16 +9,18 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-body{
-  /* overflow: hidden !important; */
-}
 .MuiSelect-icon{
   color: gray !important;
+}
+.Mui-disabled{
+  -webkit-text-fill-color: gray !important;
+  cursor: not-allowed !important;
 }
 
 @layer base{
   body {
-      @apply dark:bg-gray-800 bg-white;
+      /* @apply dark:bg-gray-800 bg-white; */
+      @apply dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-600 bg-gradient-to-br from-gray-300 to-gray-100;
   }
 }
 
