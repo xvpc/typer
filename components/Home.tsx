@@ -28,9 +28,15 @@ export default function Home(){
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if(user && textData?.length > 0){
+        if(user && textData){
             try{
-                setText(textData[Math.floor(Math.random() * textData.length)]);
+                if(user.time > 180){
+                    setText(textData.lvl3[Math.floor(Math.random() * textData.lvl3.length)]);
+                }else if(user.time > 60 && user.time != 180){
+                    setText(textData.lvl2[Math.floor(Math.random() * textData.lvl2.length)]);
+                }else{
+                    setText(textData.lvl1[Math.floor(Math.random() * textData.lvl1.length)]);
+                }
             }catch(err: any){
                 setError(err || "Something went wrong!");
                 console.log(err);

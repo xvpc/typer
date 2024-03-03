@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 // NextJs
 import { useRouter } from 'next/router';
@@ -7,10 +7,12 @@ import { useRouter } from 'next/router';
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 // Icons
-import { BsCursorText } from 'react-icons/bs';
 import { CiCircleRemove } from 'react-icons/ci';
+
+// Utils
 import FormatTime from '@/utils/Format';
 import { userContext } from '@/utils/UserProvider';
+
 
 type GameProps = {
     text: string, 

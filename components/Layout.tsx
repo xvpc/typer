@@ -1,21 +1,27 @@
-import React, { createContext } from 'react'
+import React from 'react'
 
 // NextJs
 import Head from 'next/head';
+import Link from 'next/link';
 
 // Fonts
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 // Themes
-import { useState, useEffect } from 'react'
-import { FiMoon, FiSun } from 'react-icons/fi';
 import { useTheme } from 'next-themes';
-import { Button, FormControlLabel, Switch, styled } from '@mui/material';
+
+// Mui
+import { FormControlLabel, Switch, styled } from '@mui/material';
+
+// Icons
 import { IoIosArrowDown } from 'react-icons/io';
 import { FcMoneyTransfer } from 'react-icons/fc';
-import Link from 'next/link';
+
+
+// Utils
 import { siteInfo } from '@/utils/Assets';
+
 
 type LayoutProps = {
     children: React.ReactNode,
@@ -30,7 +36,7 @@ export default function Layout({ children, title, description, keywords, image }
     const { systemTheme, theme, setTheme } = useTheme();
     const currentTheme = theme === 'system' ? systemTheme : theme;
 
-
+    // Thme Switch
     const MaterialUISwitch = styled(Switch)(({ theme }) => ({
         width: 62,
         height: 34,
