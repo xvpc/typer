@@ -96,10 +96,10 @@ export default function Layout({ children, title, description, keywords, image }
                 <meta property="og:image" content={image || siteInfo?.image} />
 
                 {/* ICONS */}
-                <link rel="shortcut icon" type="image/x-icon" href='/favicon/favicon.ico' />
-                <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png' />
-                <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'/>
-                <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'/>
+                <link rel="shortcut icon" type="image/x-icon" href='./favicon/favicon.ico' />
+                <link rel="apple-touch-icon" sizes="180x180" href='./favicon/apple-touch-icon.png' />
+                <link rel="icon" type="image/png" sizes="32x32" href='./favicon/favicon-32x32.png'/>
+                <link rel="icon" type="image/png" sizes="16x16" href='./favicon/favicon-16x16.png'/>
             </Head>
             
             <div className={`${inter.className} overflow-x-hidden h-screen flex flex-col justify-between items-center gap-10 p-0`}>

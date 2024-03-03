@@ -51,7 +51,7 @@ export default function Home(){
 
                 <hr className={`${user?.gamestatus === "finish" ? "visible" : "invisible"} w-full block h-px border-0 border-t border-t-black dark:border-t-white mt-10`} />
 
-                <div id='score-section' className={`${user?.gamestatus === "finish" ? "visible" : "hidden"} transition duration-200 ease-out flex flex-col justify-between items-center gap-28`}>
+                <div id='score-section' className={`${user?.gamestatus === "finish" ? "visible" : "hidden"} transition duration-200 ease-out flex flex-col justify-between items-center gap-14`}>
                     <h4 className='p-0 m-0 font-bold text-2xl text-gray-800 dark:text-gray-200 capitalize'>your score</h4>
 
                     <div className='container grid sm:grid-cols-3 justify-between items-center gap-10'>
