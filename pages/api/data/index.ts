@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+// import type { NextApiRequest, NextApiResponse } from "next";
 // import { readFileSync } from "fs";
 
 type dataType = {
@@ -25,8 +25,8 @@ type errorType = {
 //           headers: apiHeaders,
 //       })
 //   }
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse){
+// req: NextApiRequest, res: NextApiResponse
+export default async function handler(request: Request){
   return new Response(JSON.stringify({ error: "testing" }), {
     status: 401,
   })
