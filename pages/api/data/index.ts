@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { readFileSync } from "fs";
+// import { readFileSync } from "fs";
 
 type dataType = {
   duraction: number,
@@ -11,7 +11,8 @@ type errorType = {
   error: string
 }
 
-const text = "data/text.json";
+// const text = "data/text.json";
+
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<dataType | errorType>){
   if(req.method === "POST"){
@@ -20,8 +21,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<dataTy
 
     if(time && language){
       try{
-        const readData = readFileSync(text, 'utf8');
-        const data = JSON.parse(readData);
+        // const readData = readFileSync(text, 'utf8');
+        // const data = JSON.parse(readData);
+        const data = {
+          data: 
+          [
+            "lorem ipsum dolor sit amet, consect lorem ipsum dolor sit amet, consect",
+            "afkjh asoh aosh ofa oiash oha fm dolor sit amet, consect",
+            "g3 2oig  fadgfe  fqw qw qw qwf qw fqw fct",
+            "la fiaosjhf oisah fohnqwoih fqw fq"
+          ]
+        };
         const ranText: string = data?.data[Math.floor(Math.random() * data.data.length)];
     
         if(!ranText) return res.status(500).json({ error: "Something went wrong with parsing the text!" });
